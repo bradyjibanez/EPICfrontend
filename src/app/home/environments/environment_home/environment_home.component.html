@@ -1,0 +1,92 @@
+<section id="environment-home">
+	
+	<div class="center">
+		<h1>{{ environment_name }}</h1>
+		<h6>{{ environment_location }}</h6>
+	</div>
+
+	<div class="center" id="no-hub" *ngIf="!hub_present">
+		<h3 id="no-hub-warning">
+			No local hub connected or recent updates available
+		</h3>
+		<h6>
+			Be sure you set up your EPIC hub in this environment and that it is connected to your network
+		</h6>
+		<div>
+	        <img style="margin-top: 2em;" id="no-hub-img" src="assets/no_hub.png">
+		</div>
+	</div>
+
+	<div id="feature-table" *ngIf="hub_present">
+		<div class="feature-container">
+			<h3 id="control-title">Packages</h3>
+			<div class="feature-subcontainer">
+				<div class="feature-subtitle">
+					Loaded Packages
+				</div>
+			 	<ul id="package-list" *ngIf="loaded_packages[0] != 'No packages are loaded on this hub'">
+			        <li name="packages" *ngFor="let package of loaded_packages; index as i;">
+		        	    <a title="install" *ngIf="package.installed === 'false'">
+			        	    <i (click)="installPackage(package)" class="fa fa-wrench function-icon"></i>
+				        </a>
+			        	<div class="text-trunc">
+							{{ package.name }}
+						</div>
+				    </li>
+				</ul>
+			    <div class="center no-reading-warning" *ngIf="loaded_packages[0] == 'No packages are loaded on this hub'"> 
+				   	{{ loaded_packages[0] }}
+				</div>
+			</div>
+			<div class="feature-subcontainer">
+				<div class="feature-subtitle" style="margin-top: 1em;">
+					Installed Packages
+				</div>
+			 	<ul id="package-list" *ngIf="installed_packages[0] != 'No packages are installed on this hub' && installed_packages != 'none'">
+			        <li name="packages" *ngFor="let package of installed_packages; index as i;">
+			        	<a title="uninstall">
+				            <i (click)="uninstallPackage(package)" class="fa fa-unlink function-icon"></i>
+				        </a>
+			        	<div class="text-trunc">
+				            <a id="package-names" (click)="navigatePackageControl(environment_name, package)">
+				        	{{ package.name }}
+				        	</a>
+				    	</div>
+			        </li>
+			    </ul>
+			    <div class="center no-reading-warning" *ngIf="installed_packages[0] == 'No packages are installed on this hub'"> 
+				   	{{ installed_packages[0] }}
+				</div>
+			    <div class="center no-reading-warning" *ngIf="installed_packages == 'none'"> 
+				  	No packages are installed on this hub
+				</div>
+			</div>
+		</div>
+
+		<div class="feature-container">
+			<h3 id="control-title">Users</h3>
+		</div>
+
+	</div>
+
+	<alert></alert>
+
+	<div id="feature-table" *ngIf="hub_present">
+
+		<div class="feature-container">
+			<h3 id="control-title">Automation</h3>
+		</div>
+		<div class="feature-container">
+			<h3 id="control-title">Status Logs</h3>
+		</div>
+
+		<div class="feature-container center">
+			<h3 id="control-title">Settings</h3>
+			<a>
+				<i id="cogs" class="fa fa-cogs" (click)="goToSettings()"></i> 
+			</a>
+		</div>
+
+	</div>
+
+</section>

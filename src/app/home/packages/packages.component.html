@@ -1,0 +1,58 @@
+ <!--ENVIRONMENT CRUD-->
+<section class="container" id="packages">
+    <h2 id="center">Find and Share Your Packages</h2>
+    Here is where the heart of EPIC lives. This is where you can search for and contribute packages for the IoT hardware you currently have set up. Through the use of EPIC packages, you can create and interact with the control facets for the IoT tools you already have, and the new ones you make yourself.
+    <div id="center" class="up-downdiv">
+        <div class="buttons-div">
+        	<a [routerLink]="['/home/packages/packages_download']">
+		        <button class="button leftbtn">
+		        	<!--i class="fa fa-download"></i--> 
+	    	    	Search for a Package
+	    		</button>
+	    	</a>
+	    </div>
+        <div class="buttons-div">
+	        <button class="button rightbtn">
+	        	<i class="fa fa-upload"></i> 
+   	        	<input type="file" id="package" (change)="onUploadRequest($event.target.files[0], 'upload-package')" accept=".zip, .crt">
+	        	Submit a Package
+	        </button>
+
+            <confirmation-modal id="upload-package">
+                <h1 class="upload-info-text">Please give us a couple details about your package and we'll figure out the rest</h1>
+
+                <form [formGroup]="upload_package_form" #formDirective="ngForm" (ngSubmit)="confirmPackageUpload('upload-package', $event)">
+
+			        <div class="form-group">
+			            <label for="packageName">Package Name</label>
+			            <input placeholder="Enter your package's name" type="text" formControlName="packageName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPackage.packageName.errors }"/>
+			            <div *ngIf="submitted && fPackage.packageName.errors" class="invalid-feedback">
+			                <div class="modal-alert" *ngIf="fPackage.packageName.errors?.required">A Package Name is required</div>
+			            </div>
+			        </div>
+
+			        <div class="modal-divide form-group">
+			            <label for="packageDescription">Package Description</label>
+			            <input placeholder="Enter a brief description for your package" type="text" formControlName="packageDescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && fPackage.packageDescription.errors }">
+			            <div *ngIf="submitted && fPackage.packageDescription.errors" class="invalid-feedback">
+			                <div class="modal-alert" *ngIf="fPackage.packageDescription.errors?.required">A Package Description is required</div>
+			            </div>
+			        </div>
+                	<button class="modal-divide upload-confirm-btn">Submit</button>
+                	<button class="modal-divide upload-confirm-rightbtn upload-confirm-btn" (click)="closeModal('upload-package', false) && request_upload_package_name = false">Cancel</button>
+
+            	</form>
+
+            </confirmation-modal>   
+
+	        <div class="upload-confirm" *ngIf="request_upload_package_name">
+	        	{{ request_upload_package_name }} uploaded and will be <br/> reviewed for submission 
+	        </div>
+	    </div>
+    </div>
+    <div class="footer-buffer">
+	    <h3>Your Package History</h3> 
+    	This section will display a list of your EPIC environments with active hubs, and a list of the recently installed packages to these hubs underneath each. It will show the status of the package install, their compatibility with the configured hub on which they are running, as well as the last received log status of said package's opperation. 
+    </div>
+    <alert></alert>
+</section>

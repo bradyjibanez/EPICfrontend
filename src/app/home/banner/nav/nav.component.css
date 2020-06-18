@@ -1,0 +1,70 @@
+/* Type */
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.05em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h5 {
+    font-size: 0.9em;
+  }
+
+  h6 {
+    font-size: 0.65em;
+  }
+
+      @media screen and (max-width: 544px) {
+        h6 {
+          font-size: 0.65em;
+        }
+      }
+
+  ul {
+    margin-top: 0.25em;
+    list-style-type: none;
+  }
+
+    @media screen and (max-width: 420px) {
+      ul {
+        padding-left: 20px !important;
+        margin-top: 0em;
+      }
+    }
+
+  li {
+    text-align: center;
+    display: inline-block;
+    line-height: 0.75em;
+    width: 6em;
+  }
+
+    @media screen and (max-width: 420px) {
+      li {
+        margin-left: 1px;
+        width: 55px;
+      }
+    }
+
+  a {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: none;
+  }

@@ -1,0 +1,51 @@
+<!--ENVIRONMENT CRUD-->
+<section class="container" id="environments">
+    <div id="title-center">
+        <h2 class="center">Create a New Environment</h2>
+    </div>
+
+    <form [formGroup]="register_environment_form" (ngSubmit)="onSaveEnvironment(register_environment_form)" id="signup-form"> 
+        <div class="form-group">
+            <label for="envName">Environment Name</label>
+            <input placeholder="Enter your environment name" type="text" formControlName="envName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fEnv.envName.errors }" />
+            <div *ngIf="fEnv.envName.errors" class="invalid-feedback">
+                <div *ngIf="fEnv.envName.errors?.required">Environment Name is required</div>
+                <div *ngIf="fEnv.envName.errors?.maxlength">Environment Name must be less than 12 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="envLoc">Environment Location</label>
+            <input placeholder="Enter your environment location" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text" formControlName="envLoc" class="form-control"/>
+            <div *ngIf="submitted && fEnv.envLoc.errors" class="invalid-feedback">
+                <div *ngIf="fEnv.envLoc.errors?.required">Environment Location is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="envDesc">Environment Description</label>
+            <textarea placeholder="Enter a brief description of your environment" type="text" formControlName="envDesc" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="envType">Environment Type</label>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="house"/>House</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="apartment"/>Apartment</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="multi"/>Multi</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="other"/>Other</label>
+            </div>
+            <div *ngIf="type_errors">
+                <div><font color="red">Environment Type is required</font></div>
+            </div>
+        </div>
+        <div class="form-group" class="center footer-buffer">
+            <button [disabled]="loading">Submit</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button [routerLink]="['/home/environments']" style="margin-left: 1em;">Cancel</button>
+        </div>
+    </form>
+</section>

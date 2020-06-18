@@ -1,0 +1,26 @@
+﻿<div>
+	<!--EPIC WELCOME...-->
+	<section *ngIf="first_visit" class="container" id="register">
+	    <h1 class="center">The Extensible Package <br/> Integration 
+	    Controller</h1>
+	    <div>
+	    	EPIC is an IoT framework intended to allow for you to build custom IoT configurations for as many environments as you see fit. The idea is to allow for modular device collections (things) to be ineracted with by a central control component (hub) as fluidly as possible; regardless of the node's point of origin. The hub lives on a dedicated device of your choosing, and will act as your remote capable EPIC server. The hub you create will serve the controlling end points of all of your thing controllers, or packages. 
+	    	<br/>
+	    	<br/>
+	    	EPIC is an open source platform. Users are free to design and contribute their own packages as they see fit. The hub is the only closed source implementation in terms of public availablility...but that's not to say you're not able to access and customize even that in your own local setup.
+	    	<br/>
+	    	<br/>
+	    	To get started, download and install the hub software on the device that will be your main controller. Once that's done, find packages that match the things you're trying to control. We'll walk you through the fine tuning details of the hub and give the information you need for customized control configuration. Just remember, as an open source frame work packages are not guaranteed to function as you might think, so be sure to read the docs and reviews before looking to depend on them.  
+	    	<br/>
+	    	<br/>
+	    	With the initial idea of nodes, hubs, and packages out of the way, let's go ahead and start setting up your EPIC environments, and remember, you can always refer to the docs when questions come up. 
+	    </div>
+	    <div class="drop center">
+	    	<button (click)="getStarted()">Get Started</button> 
+		</div>
+	</section>
+	<!--...OR DEFAULT ENV CONTROLLER-->
+	<section *ngIf="!first_visit">
+	    <environment_home></environment_home>
+	</section>
+</div>

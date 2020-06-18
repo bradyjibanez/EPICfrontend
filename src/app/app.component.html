@@ -1,0 +1,17 @@
+﻿<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset="UTF-8">
+	<meta name="application-name" content="Extensible Package Integration Controller">
+	<meta name="decription" content="Config and control of your smart environment">
+	<meta name="keywords" content="IoT, DIY, OpenSource">
+	<meta name="author" content="bradyjibanez">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div (document:keydown)="onUserInteraction($event)" (document:mousemove)="onUserInteraction($event)"></div>
+	<banner></banner>
+	<router-outlet></router-outlet>
+	<footer class="footer"></footer>
+</body>
+</html>

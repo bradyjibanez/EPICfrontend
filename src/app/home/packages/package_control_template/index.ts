@@ -1,0 +1,1 @@
+export * from './package_control_template.component';

@@ -1,0 +1,59 @@
+ <!--ENVIRONMENT CRUD-->
+<section class="container" id="packages">
+    <h2 class="title" id="center">Find Packages That Suit Your Needs</h2>
+    Use this search engine to see newly released EPIC packages. In order to be able to download, install, and use these packages, be sure to be in the same environment (on the same network) that has your hub connected. You'll need to be websocket connected for the hub install functionality to work properly.
+    <br/>
+    <br/>
+    If you're looking to submit a package, be sure to have followed the format outline and to compress the package to a single .zip file. 
+
+    <div class="topnav">
+  		<input type="text" placeholder="Search for packages...">
+	</div>
+
+    <h3>Recently Released Packages</h3> 
+
+    <ul id="package-list" class="footer-buffer">
+        <li name="packages" *ngFor="let package of recent_packages; index as i;">
+            <a id="package-names" (click)="openModal('confirm-package-info', package)">
+				{{ package.packageName }}
+            </a> 
+            <a>
+	            <i (click)="downloadPackage(package, true)" id="download-btn" class="fa fa-download"></i>
+	        </a>
+            <confirmation-modal (shared_obj)="syncModal($event)" id="confirm-package-info">
+                <h2>{{ modal_package_name }}</h2>
+                <div class="modal-align">
+                    <h5 class="left">Package Author: </h5>
+                    <h4 class="right">{{ modal_package_author }}</h4>
+                </div>
+                <br/>
+                <br/>
+                <div class="modal-align">
+                    <h5 class="left">Created On: </h5>
+                    <h4 class="right">{{ modal_package_createdDate | date:'yyyy-MM-dd' }}</h4>
+                </div>
+                <br/>
+                <br/>
+                <div class="modal-align">
+                    <h5 class="left">Package Description: </h5>
+                    <h4 class="right" id="package-description">{{ modal_package_description }}</h4>
+                </div>
+                <br/>
+                <div id="buttons">
+                    <button class="button" (click)="closeModal('confirm-package-info')">Close</button>
+                    <button (click)="downloadPackage(modal_package, true)" id="confirm-right-btn">Download</button>
+                    <button *ngIf="hub_present" (click)="downloadPackage(modal_package, false, true)" id="confirm-right-btn">Load To Hub</button>
+                    <button *ngIf="user._id === modal_package_admin" (click)="openModal('confirm-delete'); closeModal('confirm-package-info')" id="confirm-right-btn" class="delete-btn">Delete</button>
+                    <confirmation-modal id="confirm-delete">
+                        <h1 class="warning-text">Are you sure you want to delete {{ modal_package_name }}?</h1>
+                        <button class="unisonwidth delete-btn" (click)="deletePackage(modal_package); closeModal('confirm-delete')">Delete</button>
+                        <button class="rightbtn unisonwidth" (click)="closeModal('confirm-delete', modal_package_name)">Nevermind</button>
+                    </confirmation-modal>  
+                </div>
+            </confirmation-modal>
+        </li>
+    </ul>
+
+    <alert></alert>
+    
+</section>

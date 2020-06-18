@@ -1,0 +1,109 @@
+﻿<!--USER REGISTER-->
+<section *ngIf="!submitted_user" class="container" id="register">
+    <h2 class="center">Create A User Profile</h2>
+    An EPIC account needs at least one user, and one environment. To create your  account, we will start by defining your user profile, then we will define your environment profile. This user will be the administrator of the environment, but don't worry if you make a mistake with these choices you make now, you can change things up later if need be.
+    <h3>User Profile:</h3> 
+    <form [formGroup]="register_user_form" (ngSubmit)="onSaveUser(register_user_form)">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input placeholder="Enter your first name" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.firstName.errors }" />
+            <div *ngIf="submitted && fUser.firstName.errors" class="invalid-feedback">
+                <div *ngIf="fUser.firstName.errors?.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input placeholder="Enter your last name" type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.lastName.errors }" />
+            <div *ngIf="submitted && fUser.lastName.errors" class="invalid-feedback">
+                <div *ngIf="fUser.lastName.errors?.required">Last Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input placeholder="Enter a unique username" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.username.errors }" />
+            <div *ngIf="submitted && fUser.username.errors" class="invalid-feedback">
+                <div *ngIf="fUser.username.errors?.required">Username is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input placeholder="Enter your email address" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.email.errors }" />
+            <div *ngIf="submitted && fUser.email.errors" class="invalid-feedback">
+                <div *ngIf="fUser.email.errors?.required">email is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input placeholder="Choose a password (minimum six characters)" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.password.errors }" />
+            <div *ngIf="submitted && fUser.password.errors" class="invalid-feedback">
+                <div *ngIf="fUser.password.errors?.required">Password is required</div>
+                <div *ngIf="fUser.password.errors?.minlength">Password must be at least 6 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="passwordConf">Password Confirmation</label>
+            <input placeholder="Match your password (minimum six characters)" type="password" formControlName="passwordConf" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.passwordConf.errors }" />
+            <div *ngIf="submitted && fUser.passwordConf.errors" class="invalid-feedback">
+                <div *ngIf="fUser.passwordConf.errors?.required">Password confirmation is required</div>
+                <div *ngIf="fUser.passwordConf.errors?.minlength">Password must be at least 6 characters</div>
+            </div>
+            <alert></alert>
+        </div>
+        <div class="form-group" class="center_bottombtns">
+            <button [disabled]="loading">Submit</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button [routerLink]="['/login']" style="margin-left: 1em;">Cancel</button>
+        </div>
+    </form>    
+</section>
+
+<!--ENVIRONMENT REGISTER-->
+<section *ngIf="submitted_user" class="container" id="register">
+    <h2 class="center">Create An Environment</h2>
+    Now that we have your user profile, let's submit your environment details and you'll be set to start building your IoT set-up.
+    <h3>Environment Profile:</h3> 
+    <form [formGroup]="register_environment_form" (ngSubmit)="onSaveEnvironment(register_environment_form)" id="signup-form"> 
+        <div class="form-group">
+            <label for="envName">Environment Name</label>
+            <input placeholder="Enter your environment name" type="text" formControlName="envName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fEnv.envName.errors }" />
+            <div *ngIf="fEnv.envName.errors" class="invalid-feedback">
+                <div *ngIf="fEnv.envName.errors?.required">Environment Name is required</div>
+                <div *ngIf="fEnv.envName.errors?.maxlength">Environment Name must be less than 12 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="envLoc">Environment Location</label>
+            <input placeholder="Enter your environment location" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" type="text" formControlName="envLoc" class="form-control" [ngClass]="{ 'is-invalid': submitted && fEnv.envLoc.errors }"/>
+            <div *ngIf="submitted && fEnv.envLoc.errors" class="invalid-feedback">
+                <div *ngIf="fEnv.envLoc.errors?.required">Environment Location is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="envDesc">Environment Description</label>
+            <textarea placeholder="Enter a brief description of your environment" type="text" formControlName="envDesc" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="envType">Environment Type</label>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="house"/>House</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="apartment"/>Apartment</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="multi"/>Multi</label>
+            </div>
+            <div id="radio-align">
+                <label><input type="radio" class="form-check-input" formControlName="envType" value="other"/>Other</label>
+            </div>
+            <div *ngIf="type_errors">
+                <div><font color="red">Environment Type is required</font></div>
+            </div>
+        </div>
+        <div class="form-group" class="center">
+            <button [disabled]="loading">Submit</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button (click)="messageBanner()" [routerLink]="['/home', {'first-visit': true}]" style="margin-left: 1em;">Create Later</button>
+        </div>
+    </form>
+</section>

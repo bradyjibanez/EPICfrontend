@@ -1,0 +1,60 @@
+<!--USER UPDATE/DELETE-->
+<section>
+    <div class="container" id="register">
+        <h2 id="center">Update Your User Profile</h2>
+        Fill in whatever changes to your profile you feel you need. Only fill in the things you want changed, anything left blank stays the same as it was. Environment changes are dealt with in the environments section of the app.
+        <alert></alert>
+        <h3>User Profile</h3> 
+        <form [formGroup]="register_user_form" (ngSubmit)="onUpdateUser(registerUserForm)">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.firstName.errors }" placeholder="{{ user['firstName'] }}"/>
+                <div *ngIf="submitted && fUser.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.firstName.errors?.required">First Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.lastName.errors }" placeholder="{{ user['lastName'] }}"/>
+                <div *ngIf="submitted && fUser.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.lastName.errors?.required">Last Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.username.errors }" placeholder="{{ user['username'] }}"/>
+                <div *ngIf="submitted && fUser.username.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.username.errors?.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.email.errors }" placeholder="{{ user['email'] }}"/>
+                <div *ngIf="submitted && fUser.email.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.email.errors?.required">email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.password.errors }" placeholder="********"/>
+                <div *ngIf="submitted && fUser.password.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.password.errors?.required">Password is required</div>
+                    <div *ngIf="fUser.password.errors?.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordConf">Password Confirmation</label>
+                <input type="password" formControlName="passwordConf" class="form-control" [ngClass]="{ 'is-invalid': submitted && fUser.passwordConf.errors }" placeholder="********"/>
+                <div *ngIf="submitted && fUser.passwordConf.errors" class="invalid-feedback">
+                    <div *ngIf="fUser.passwordConf.errors?.required">Password confirmation is required</div>
+                    <div *ngIf="fUser.passwordConf.errors?.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group" id="bottomdivcenter">
+                <button [disabled]="loading">Submit</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <button [routerLink]="['/home']" style="margin-left: 1em;">Cancel</button>
+            </div>
+        </form>    
+    </div>
+</section>

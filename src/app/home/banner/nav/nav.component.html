@@ -1,0 +1,36 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/home/environments']">
+	   	<div>
+	      <h6>Environments</h6>
+		</div>
+		<i class="fa fa-building"></i>
+	  </a>	
+	</li>
+    <li>
+      <a [routerLink]="['/home/packages']">
+       	<div>
+	      <h6>Packages</h6>
+		</div>
+		<i class="fa fa-cube"></i>
+	  </a>
+    </li>
+    <li>
+      <a [routerLink]="['/home/profile_settings']">
+		<div>
+	      <h6>Profile</h6>
+		</div>
+		<i class="fa fa-user"></i> 
+	  </a>
+    </li>
+    <li>
+      <a (click)="logOut()" [routerLink]="['/login']">
+	    <div>
+		  <h6>Logout</h6>
+		</div>
+		  <i class="fa fa-power-off"></i> 
+	  </a>
+    </li>
+  </ul>
+</nav>

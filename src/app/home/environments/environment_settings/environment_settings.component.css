@@ -1,0 +1,316 @@
+@import url(../../../../font-awesome.min.css);
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,700");
+/* ******************************TAG DEFINITION************************************ */
+
+/* Reset */
+
+	html, body, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		font-size: 100%;
+	}
+
+/* Type */
+	
+	h1, h2, h3, h4, h5, h6 {
+		color: #555;
+		font-weight: 300;
+		line-height: 1em;
+		margin: 0em 0 0.75em 0em;
+		text-transform: uppercase;
+	}
+
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+	h2 {
+		font-size: 1.6em;
+		line-height: 1.5em;
+	}
+
+	h3 {
+		font-size: 1.05em;
+		line-height: 1.5em;
+	}
+
+
+	h4 {
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+
+	h5 {
+		font-size: 0.9em;
+		line-height: 1.5em;
+	}
+
+	h6 {
+		font-size: 0.7em;
+		line-height: 1.5em;
+	}
+
+	ul {
+		padding-inline-start: 0px;
+	}
+
+	input {
+		height: auto;
+ 		vertical-align: middle;
+	}
+
+	input::placeholder {
+		font-size: 0.8em;
+	}
+
+
+/* ************************BODY COMPONENTS DEFINITION******************** */
+
+/* Containers */
+
+
+	#center{
+		text-align: center;
+		font-size: 100%;
+	}
+
+	#user-list,
+	#package-list {
+		list-style-type: none;
+	}
+
+	#control_content {
+		margin-top: 50px;
+	}
+
+	.invite-user-form {
+		text-align: center;
+		display: inline;
+		float: left;
+	}
+
+	.invite-user-btn {
+		margin-left: 10px;
+		margin-top: 2px;
+	}
+
+	.invite-user-textbox {
+		width: 250px;
+	}
+
+	.environment-activation-btn {
+		margin-top: 4em;
+	}
+
+	.claim-env-btn {
+		margin-top: 5px;
+	}
+
+	.label {
+		font-color: black;
+	}
+
+	.warning-text {
+		color: white;
+	}
+
+	.radio_align {
+		margin-left: 20px;
+	}
+
+	.content-title {
+		width: 50%;
+		text-align: center;
+	}
+
+	.content {
+		width: 100%;
+		vertical-align: top;
+		display: flex;
+	}
+
+	.form_content {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.form-element { 
+		text-align: center;
+	}
+
+	.container#environment {
+		margin: auto;
+		position: absolute;
+		left: 0; right: 0;
+		margin-top: 1em;
+		width: auto;
+	}
+
+	#delbtndiv {
+		text-align: center;
+		margin-left: 10px;
+		margin-bottom: 1em;
+	}
+
+	#environment-instruction-1 {
+		display: absolute;
+    	border-style: solid;
+    	padding: 5px;
+		color: white;
+		background: #137287;
+		margin-left: 20%;
+		width: 60%;
+	    border-radius: 25px;
+		opacity: 0.88;
+		margin-bottom: 0.5em;
+	}
+
+	#environment-instruction-2 {
+		display: absolute;
+		text-align: center;
+		float: right;
+    	border-style: dotted;
+		color: green;
+		background: white;
+		margin-left: 40%;
+		width: 35%;
+	    border-radius: 25px;
+		opacity: 0.88;
+		margin-bottom: 0.5em;
+	}
+
+	#instruction-arrow {
+		margin-bottom: 4px;
+		width: 4em;
+		height: 2.5em;
+	}
+
+	#instruction-arrow-2 {
+		display: inline-block;
+		float: right;
+		margin-top: 2px;
+		width: 4em;
+		height: 2.5em;
+	}
+
+	#instruction-arrow-3 {
+		margin-left: 8em;
+		margin-bottom: 2em;
+		width: 4em;
+		height: 2.5em;
+	}
+	
+	#instruction-body {
+		padding: 5px;
+		margin-bottom: 6px;
+		text-align: center;
+	}
+
+	#active-env-instruction {
+		position: absolute; 
+		left: -15em; 
+		width: 80%;
+	}
+
+	@media screen and (max-width: 1024px) {
+      #active-env-instruction {
+		position: absolute; 
+		left: -8em; 
+		width: 80%;      }
+    }
+
+	#arrow-border {
+		color: black;
+		background-color: lightgrey;
+	   	border-style: ridge;
+	    border-radius: 5px;
+	}
+
+	#popup-absolute {
+		position: absolute;
+		text-align: center;
+	}
+
+	#no-hub-warning {
+		font-style: bold;
+		color: red;
+	}
+
+
+/* Button */
+
+
+	button:focus {outline:0;}
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button {
+		height: 28px;
+		position: relative;
+		border: 0;
+		cursor: pointer;
+		white-space: nowrap;
+		border-radius: 10px;
+		background-color: grey;
+		color: #ffffff !important;
+		min-width: 0;
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button#deleteenvbutton {
+		height: 25px;
+		position: relative;
+		border: 0;
+		margin-top: 8px;
+		margin-left: 20px;
+		cursor: pointer;
+		border-radius: 10px;
+		margin-right: 25px;
+		background-color: #fd4656;
+		color: #ffffff !important;
+		min-width: 0;
+		line-height: 2px;
+	}
+
+	.activatebtn {
+		font-size: 0.8em;		
+		margin-left: 5px; 
+		margin-bottom: 5px;
+		width: 6em;	
+	}
+
+	.invitebtn {
+		font-size: 0.8em;
+		margin-top: 5px;
+		width: 5em;	
+	}
+
+	.rightbtn {
+		margin-left: 10px;
+	}
+
+	.delete-btn {
+		background-color: #d11a2a;
+	}
+
+	.unisonwidth {
+		width: 12em;
+	}
+
+	@media screen and (max-width: 420px) {
+      .unisonwidth {
+        width: 8em;
+      }
+    }
+
+    #skip-btn {
+    	color: purple; 
+    	font-size: 16px; 
+    	font-style: italic;
+    }

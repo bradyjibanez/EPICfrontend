@@ -1,0 +1,279 @@
+/* Banner (Header) */
+
+/* BANNER LOGGED OUT */
+
+	#banner-loggedout {
+		background-color: #137287;
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		padding-top: 1.5vh;
+		position: relative;
+		top: 0px;
+		height: 10vw;
+		overflow: hidden;
+		z-index: 2;
+	}
+
+	@media screen and (max-width: 420px) {
+			#banner-loggedout {
+				height: 8vw;
+				padding-bottom: 1em;
+				min-height: 110px;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			#banner-loggedout {
+				height: 11vw;
+			}
+		}	
+
+	#banner-loggedout h1, #banner-loggedout h4, #banner-loggedout h5, #banner-loggedout h6 {
+		color: #ffffff;
+		padding-top: 0.75em;
+		font-size: 1.4vw;
+	}
+
+		#banner-loggedout h2 {
+		color: #ffffff;
+		border-style: double solid;
+		border-width: 4px 1px;
+		font-size: 2.25vw;
+		margin: 0 auto;
+		line-height: 0.5em;
+		padding: 1em 0 1em 0;
+		width: 40%;
+		overflow: hidden;
+	}
+
+		@media screen and (max-width: 420px) {
+			#banner-loggedout h2 {
+				font-size: 6vw;
+			}
+		}
+
+	#banner-loggedout h3 {
+		color: #ffffff;
+		font-size: 1.42vw;
+		padding-top: 0.5em;
+	}
+
+		@media screen and (max-width: 420px) {
+			#banner-loggedout h3 {
+				padding-top: 0.5em;
+				font-size: 3vw;
+			}
+		}
+
+	#banner-loggout div {
+		margin-top: 2px;
+	}
+
+/* BANNER LOGGED IN */
+
+	#banner {
+		background-color: #137287;
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		padding-top: 1vh;
+		position: relative;
+		top: 0px;
+		height: 10vw;
+		overflow: hidden;
+		z-index: 2;
+	}
+
+		@media screen and (max-width: 420px) {
+			#banner {
+				height: 8vw;
+				padding-bottom: 1em;
+				min-height: 110px;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			#banner {
+				height: 11vw;
+			}
+		}			
+
+	#banner h1, #banner h4, #banner h5, #banner h6 {
+		color: #ffffff;
+		padding-top: 0.75em;
+		font-size: 1.4vw;
+	}
+
+	#banner h2 {
+		color: #ffffff;
+		border-style: double solid;
+		border-width: 4px 1px;
+		font-size: 2.25vw;
+		margin: 0 auto;
+		line-height: 0.5em;
+		padding: 1em 0 1em 0;
+		width: 40%;
+		overflow: hidden;
+	}
+
+		@media screen and (max-width: 420px) {
+			#banner h2 {
+				width: 20% !important;
+				font-size: 6vw;
+			}
+		}
+
+	#banner h3 {
+		color: #ffffff;
+		font-size: 1.42vw;
+		padding-top: 0.5em;
+	}
+
+		@media screen and (max-width: 420px) {
+			#banner h3 {
+				padding-top: 0.225em;
+				font-size: 3vw;
+			}
+		}
+
+	#banner div {
+		margin-top: 2px;
+	}
+
+/* Navbar (header) */
+
+	#navbar {
+		background-color: #137287;
+		width: 100%;
+		position: relative;
+		height: 65px;
+		overflow: hidden;
+	}
+
+		@media screen and (max-width: 420px) {
+			#navbar {
+				padding-bottom: 1em;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			#navbar {
+			}
+		}			
+
+	#navbar h1, #navbar h4, #navbar h5, #navbar h6 {
+		color: #ffffff;
+		padding-top: 0.75em;
+		font-size: 1.4vw;
+	}
+
+	#navbar h2 {
+		color: #ffffff;
+		border-style: double solid;
+		border-width: 4px 1px;
+		font-size: 12pt;
+		line-height: 0.5em;
+		padding: 1em 0;
+		width: 180px;
+		overflow: hidden;
+		top: 50%;
+	}
+
+		@media screen and (max-width: 420px) {
+			#navbar h2 {
+				width: 160px;
+				font-size: 12pt;
+				margin-bottom: 0.75em;
+			}
+		}
+
+	#navbar h3 {
+		color: #ffffff;
+		font-size: 1.42vw;
+	}
+
+		@media screen and (max-width: 420px) {
+			#navbar h3 {
+				padding-top: 0.225em;
+				font-size: 3vw;
+			}
+		}
+
+	#navbar div {
+		display: inline-block;
+	}
+
+	#logo {
+		text-align: center;
+		padding-top: 8px;
+		margin-left: 5px;
+		float: left;
+	}
+
+	#greeting {
+	    color: #ffffff;
+		float: right;
+		padding-top: 15px;
+		padding-right: 35px;		
+	}
+
+	#icons {
+		text-align: center;
+		padding-top: 8px;
+	}
+
+
+		@media screen and (max-width: 420px) {
+			#icons {
+				font-size: 8pt;
+				text-align: center;
+				padding-top: 18px;
+				padding-right: 3px;
+			}
+		}
+
+	#title-link {
+	    text-decoration: none;
+	}
+
+
+/* General */
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #555;
+		font-weight: 300;
+		line-height: 1em;
+		margin: 0em 0 0.75em 0em;
+		text-transform: uppercase;
+	}
+
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+	h2 {
+		font-size: 1.6em;
+		line-height: 1.5em;
+	}
+
+	h3 {
+		font-size: 1.05em;
+		line-height: 1.5em;
+	}
+
+	h4 {
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+
+	h5 {
+		font-size: 0.9em;
+		line-height: 1.5em;
+	}
+
+	h6 {
+		font-size: 0.7em;
+		line-height: 1.5em;
+	}

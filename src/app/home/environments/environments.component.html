@@ -1,0 +1,53 @@
+<!--ENVIRONMENT UPDATE/GEN OPTIONS-->
+<section class="container" id="environments" >
+    <div id="title-center">
+        <h2>Create and Update Your Environments</h2>
+    </div>
+    <div>
+        This is where your environments can be found and updated, or newly created. Use this tool to switch between environments, update them as needed, and make changes to the collection of users who can interact with them.
+    </div>
+    <div class="content">
+        <div id="content-title">
+            <h3>Existing Environments</h3>
+            <ul #createdinstruction id="env-list">
+                <li name="environments" *ngFor="let environment of environments;
+                let i=index;">
+                    <a id="env-names" (click)="configEnvironmentSettings(environment.envName)">{{ environment.envName }}</a>
+                </li>
+            </ul>
+            <kendo-popup [anchor]="createdinstruction" [margin]="margin" [animate]="animateInstructionCreated" *ngIf="first_visit && environments.length != 0">
+                <img id="up-instruction-arrow" src="assets/instruction-up-arrow-2.png">
+                <div id="created-instruction">
+                   <div id="instruction-right">
+                       <div style="margin-left: 10px;">
+                           Head to your newly created environment to learn about how to interact with it.
+                       </div>
+                    </div>
+                </div>
+                <div class="skip-createdenv">
+                    <a>skip</a>
+                </div>
+            </kendo-popup>
+        </div>
+        <div id="create-env-btn">
+            <div id="dropdown-onhover">
+                <button #createinstruction id="createenvbutton" [routerLink]="create_environment_route">+</button>
+                <br/>
+                <kendo-popup [anchor]="createinstruction" [margin]="margin" [animate]="animateInstruction" *ngIf="first_visit && environments.length == 0">
+                    <div id="instruction-right">
+                        <img id="up-instruction-arrow" src="assets/instruction-up-arrow-2.png">
+                    </div>
+                    <div id="create-instruction">
+                        <div style="margin-right: 5px;">
+                           Start building your EPIC IoT setup by creating your first environment.
+                       </div>
+                    </div>
+                    <div class="skip-createenv">
+                        <a>skip</a>
+                    </div>
+                </kendo-popup>
+            </div>
+        </div>
+    </div>
+    <alert></alert>
+</section>

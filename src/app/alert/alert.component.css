@@ -1,0 +1,25 @@
+.show {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    margin: 5% 0 0 0;
+    -webkit-animation-duration: 2s;animation-duration: 2s;
+    -webkit-animation-fill-mode: both;animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeOut {
+    0% {opacity: 0.9;}
+    100% {opacity: 0;}
+ }
+
+ @keyframes fadeOut {
+    0% {opacity: 0.9;}
+    100% {opacity: 0;}
+ }
+
+ .step {
+	text-align: center; 
+    animation-delay: 3s;
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+ }

@@ -1,0 +1,52 @@
+<section id="environment-home">
+	
+	<div *ngIf="hub_present" class="center">
+		<h1>{{ package_name }}</h1>
+		<div title="{{actdeacttitle}}" [ngClass]="activated ? 'act-btn' : 'deact-btn'">
+			<a (click)="act_deactPackage()">
+	        	<i style="margin-top: 0.6em; font-size: 2em;" class="fa fa-power-off"></i> 
+			</a>
+		</div>
+	</div>
+	
+	<div class="center" id="no-hub" *ngIf="!hub_present">
+		<h3 id="no-hub-warning">
+			No local hub connected or recent updates available
+		</h3>
+		<h6>
+			Be sure you set up your EPIC hub in this environment and that it is connected to your network
+		</h6>
+		<div>
+	        <img id="no-hub-img" src="assets/no_hub.png">
+		</div>
+	</div>
+
+	<div class="center" *ngIf="hub_present">
+		<div id="logo-wrap">
+			<div id="logo-img-wrap">
+				<img class="normal" [src]="logo"/>
+	        	<ngx-spinner></ngx-spinner>
+			</div>
+		</div>
+		<alert></alert>
+		<div *ngIf="activated">
+			<div style="margin-top: 1em;">
+				<button (click)="refreshAllThings()">
+					Refresh Package Status
+				</button>
+			</div>
+			<div class="thing-btns" *ngFor="let thing of things | keyvalue">
+				<div>
+					<p>{{ thing.value.thing_id }}</p>
+				</div>
+				<button [ngClass]="thing.value.status==='active' ? 'thing-btn-active' : 'thing-btn-deactive'" (click)="alternateThingStatus(thing)">
+					{{ thing.value.display_status }}
+				</button>
+				<a (click)="refreshThing(thing)">
+					<i class="fa fa-refresh" aria-hidden="true" title="refresh {{thing.value.thing_id}}"></i>			
+				</a>
+			</div>
+		</div>
+	</div>
+
+</section>

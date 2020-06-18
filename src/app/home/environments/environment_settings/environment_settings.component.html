@@ -1,0 +1,208 @@
+<!--ENVIRONMENT UPDATE/GEN OPTIONS-->
+<section #instruction1 class="container" id="environment">
+
+    <div id="active-env-instruction">
+        <kendo-popup [anchor]="instruction1" [animate]="animateInstructionLeft" *ngIf="first_visit == 6">
+            <img id="instruction-arrow-3" src="assets/instruction-up-arrow-2.png">
+            <div id="environment-instruction-1">
+                <div id="instruction-body">
+                    When your environment name shows here, it's active, and clicking this link takes you home to your package controls. 
+                </div>
+            </div>
+        </kendo-popup>
+    </div>
+
+    <div id="center">
+        <kendo-popup *ngIf="first_visit != 0 && first_visit < 7 && first_visit != null" [anchor]="instruction1">
+            <div id="environment-instruction-1">
+                <div>
+                   Here is where all of your environment settings are available.
+                </div>
+                <div id="instruction-body">
+                   <a (click)="incrementVisit()" id="arrow-border">next</a>
+                </div>
+            </div>
+            <div id="skip-btn">
+                <a (click)="skipIntro()">skip</a>
+            </div>
+            <img id="instruction-arrow" src="assets/instruction-down-arrow.png">
+        </kendo-popup>
+        <kendo-popup *ngIf="first_visit == 9" [anchor]="instruction1" [animate]="animateInstruction">
+            <div id="environment-instruction-1">
+                <div>
+                   That's your run down for how EPIC environments work. Check the docs for answers to any other questions you have!
+                </div>
+                <div id="instruction-body">
+                    <a (click)="incrementVisit()">
+                        <img id="instruction-arrow" (click)="incrementVisit()" src="assets/checkmark.png">
+                    </a>
+                </div>
+            </div>
+        </kendo-popup>
+        <h2>{{ environment_state['envName'] }} Settings</h2>    	
+    </div>
+
+    <div class="content">
+        <div class="content-title">
+            <h3>Registered Users</h3>
+            <ul *ngIf="registered_hub_users[0] != 'No hub response for registered users'" #instruction2 id="user-list">
+                <li *ngFor="let user of registered_hub_users">
+                    {{ user }}
+                </li>
+            </ul>
+            <div *ngIf="registered_hub_users[0] == 'No hub response for registered users'">
+                {{ registered_hub_users }}
+                <!--{{ this.user['firstName'] }} {{ this.user['lastName'] }} 
+                <h6 style="display: inline"> -- admin</h6-->
+            </div>
+            <kendo-popup [anchor]="instruction2" [animate]="animateInstruction" *ngIf="first_visit == 2">
+                <img id="instruction-arrow" src="assets/instruction-up-arrow-3.png">
+                <div id="environment-instruction-1">
+                    <div id="instruction-body">
+                       This is where you'll see your registered users, who accepted your invites sent to their email from here.
+                       <br/>
+                    </div>
+                    <img id="instruction-arrow-2" src="assets/instruction-down-arrow-2.png">
+                </div>
+            </kendo-popup>
+        </div>
+        <div class="content-title">
+            <h3>Loaded Packages</h3>
+            <ul *ngIf="claimed_hub_present && packages[0] != 'No packages are loaded on this hub'" #instruction3 id="package-list">
+                <li *ngFor="let package of packages"> 
+                    {{ package.name }} 
+                </li>
+            </ul>
+            <div *ngIf="claimed_hub_present && packages[0] == 'No packages are loaded on this hub'">
+                {{ packages }}
+            </div>
+            <div *ngIf="!claimed_hub_present">
+                {{ packages }}
+            </div>
+            <kendo-popup [anchor]="instruction3" [animate]="animateInstruction" *ngIf="first_visit == 3">
+                <img id="instruction-arrow" src="assets/instruction-up-arrow-4.jpg">
+                <div id="environment-instruction-1">
+                    <div id="instruction-body">
+                       This is where you'll see the packages installed on your hub, ready for use, and found in the packages link in the top navbar.
+                    </div>
+                </div>
+            </kendo-popup>
+        </div>
+          <div class="content-title">
+            <h3>Automation Definitions</h3>
+            <ul #instruction4 id="package-list">
+                <li> {{ autodefs }} </li>
+            </ul>
+            <kendo-popup [anchor]="instruction4" [animate]="animateInstruction" *ngIf="first_visit == 4">
+                <img id="instruction-arrow" src="assets/instruction-up-arrow-2.png">
+                <div id="environment-instruction-1">
+                    <div id="instruction-body">
+                       This is where your hub automation configs are shown, with a creation and editing section soon to come... 
+                    </div>
+                </div>
+            </kendo-popup>
+        </div>
+    </div>
+
+    <form [formGroup]="environment_update_form" (ngSubmit)="onUpdateEnvironment(environment_update_form)"> 
+
+
+    	<div id="control_content">
+			<div class="form_content">
+			    <div class="invite-user-form">
+		        	<input forControlName="add_user" type="text" placeholder="Invite a user to this environment" class="form-control invite-user-textbox"/>
+                </div>
+                <div class="invite-user-form invite-user-btn">
+			        <button class="invitebtn">Invite</button> 
+			    </div>
+			</div>
+
+            <div class="form_content environment-activation-btn">
+                <div class="popup-absolute">
+                    <div id="center">
+                        <label class="label">Environment Control</label>
+                        <button #instruction5 id="activatebtn" (click)="activateEnvironment()" class="activatebtn">{{ activate_btn_value }}</button>
+                        <kendo-popup [anchor]="instruction5" [animate]="animateInstruction" *ngIf="first_visit == 5">
+                            <img id="instruction-arrow" src="assets/instruction-up-arrow.png">
+                        </kendo-popup>
+                        <kendo-popup [anchor]="instruction5" [animate]="animateInstructionLeft" *ngIf="first_visit == 5">
+                            <div id="environment-instruction-1">
+                                <div id="instruction-body">
+                                   This is where environment activation can de started and stopped to allow fine tuned control of your environment packages. 
+                                </div>
+                            </div>
+                        </kendo-popup>
+                    </div>
+                </div> 
+            </div>
+            <br/>
+            <br/>
+            <div class="form-content">
+                <div *ngIf="claimed_hub_id=='hub_claim_error'" class="form-element">
+                    <h3>{{ environment_state['envName'] }} Hub Could Not Be Claimed...restart to try again</h3>
+                </div>
+                <div *ngIf="claimed_hub_present " class="form-element">
+                    <h3>{{ environment_state['envName'] }} Hub Connected Locally</h3>
+                </div>
+                <div *ngIf="unclaimed_hub_present && !claimed_hub_present" class="form-element">
+                    <h3>Unclaimed Hub Seen On This Network</h3>
+                    <button (click)="claimHub()" class="claim-env-btn">claim for {{ environment_state['envName'] }}</button> 
+                </div>
+                <div *ngIf="!unclaimed_hub_present && !claimed_hub_present" class="form-element">
+                    <h3 id="no-hub-warning">No Local Hub Available</h3>
+                </div>           
+                <div id="center">
+                    <kendo-popup [anchor]="instruction1" [animate]="animateInstructionLeft" *ngIf="first_visit == 7">
+                        <img id="instruction-arrow" src="assets/instruction-up-arrow-4.jpg">
+                        <div id="environment-instruction-1">
+                            <div id="instruction-body">
+                               When an EPIC hub is available for local set up, you'll have the option to select it for this environment here. You'll also be given the option to release it once it's claimed.
+                               <br/>
+                                <div id="instruction-body">
+                                    <a (click)="incrementVisit()" id="arrow-border">next</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </kendo-popup>
+                    <kendo-popup [anchor]="instruction1" *ngIf="first_visit == 8">
+                        <div id="environment-instruction-1">
+                            <div id="instruction-body">
+                               If the time ever comes, you can delete your environment here.
+                               <br/>
+                                <div id="instruction-body">
+                                    <a (click)="incrementVisit()" id="arrow-border">next</a> 
+                                </div>
+                            </div>
+                        </div>
+                        <img id="instruction-arrow" src="assets/instruction-down-arrow-3.png">
+                    </kendo-popup>
+                </div>
+
+                <div *ngIf="!unclaimed_hub_present && claimed_hub_present" class="form-element">
+                    <button (click)="openModal('confirm-release')">Release {{ environment_state['envName'] }}'s hub</button>
+                    <confirmation-modal id="confirm-release">
+                        <h1 class="warning-text">Are you sure you want to release {{ environment_state['envName'] }}'s hub?</h1>
+                        <button class="unisonwidth delete-btn" (click)="confirmHubRelease('confirm-release')">Release Hub</button>
+                        <button class="rightbtn unisonwidth" (click)="closeModal('confirm-release')">Nevermind</button>
+                    </confirmation-modal>                        
+                </div>
+
+                <div id="delbtndiv">
+                    <button id="deleteenvbutton" (click)="openModal('confirm-delete')">
+                        <div id="x-body">
+                            Delete {{ environment_state['envName'] }}
+                        </div>
+                    </button>
+                    <confirmation-modal *ngIf="first_visit == 0 || first_visit == null" id="confirm-delete">
+                        <h1 class="warning-text">Are you sure you want to delete {{ environment_state['envName'] }}?</h1>
+                        <button class="unisonwidth delete-btn" (click)="confirmEnvDelete('confirm-delete')">Delete</button>
+                        <button class="rightbtn unisonwidth" (click)="closeModal('confirm-delete')">Nevermind</button>
+                    </confirmation-modal>  
+                </div>
+
+            </div>
+        </div>
+	</form>
+    <alert></alert>
+
+</section>

@@ -1,0 +1,27 @@
+<section>
+	<!--Titlepage-->
+	<div *ngIf="!logged_in; else not_logged_in" id="banner-loggedout">
+        <h2>EPIC IoT</h2> 
+        <h3>a tool for building and controlling smarter things</h3>
+	</div>
+	<!--Nav bar and user goodies-->
+	<ng-template #not_logged_in>
+		<div id="navbar">
+			<div id="logo">
+				<a id="title-link" *ngIf="active_environment" [routerLink]="['/home']">
+		        	<h2>{{ environment }}</h2> 
+		        </a>
+		        <a id="title-link" *ngIf="!active_environment" (click)="sendEnvErrorAlert()">
+		        	<h2>{{ environment }}</h2> 
+		        </a>
+			</div>
+			<div id="icons">
+				<navigate></navigate>
+			</div>
+			<div *ngIf="greeting" id="greeting">
+				Hi {{ user_first_name }}
+			</div>
+		</div>
+	</ng-template>
+</section>
+
