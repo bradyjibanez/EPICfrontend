@@ -23,7 +23,7 @@
     "@progress/kendo-angular-common": "^1.2.2",
     "@progress/kendo-angular-popup": "^3.0.5",
     "@types/socket.io-client": "^1.4.32",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "core-js": "^2.6.9",
     "cors": "^2.8.5",
